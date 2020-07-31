@@ -40,8 +40,7 @@ impl ManaCost {
                 }
             }
 
-            //TODO: make this support more than 2 types of or
-            return Ok(ManaCost::Or(Rc::new(values[0].clone()), Rc::new(values[1].clone())));
+            return Ok(ManaCost::chained_or(values));
         }
         let chars = s.chars().collect::<Vec<char>>();
         if chars[0] == 'H' {
@@ -73,6 +72,15 @@ impl ManaCost {
                 Ok(n) => ManaCost::Generic(n),
             }
         })
+    }
+
+    pub fn chained_or(v: Vec<ManaCost>) -> ManaCost {
+        v.into_iter().fold(None, |acc, x| {
+            match acc {
+                None => Some(x),
+                Some(acc) => Some(ManaCost::Or(Rc::new(acc), Rc::new(x)))
+            }
+        }).unwrap()
     }
 }
 
