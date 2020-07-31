@@ -1,3 +1,4 @@
+mod test;
 mod card;
 
 use serde::{Deserialize, Serialize};
@@ -11,10 +12,6 @@ macro_rules! wait {
     };
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-struct CostTestStruct {
-    cost: ManaCostCollection
-}
 
 #[cfg(test)]
 mod tests {
@@ -38,24 +35,5 @@ mod tests {
             .text())
             .unwrap();
         println!("{}", a);
-    }
-
-    #[test]
-    fn mana_cost() {
-        let json = "{\"cost\": \"{G/P}{R}{½}{4353246}\"}";
-        let cost = serde_json::from_str::<CostTestStruct>(json).unwrap().cost;
-        assert_eq!(cost.array, vec![
-            ManaCost::Or(Rc::new(ManaCost::Green), Rc::new(ManaCost::Phyrexian)),
-            ManaCost::Red,
-            ManaCost::Half(Rc::new(ManaCost::Generic(1))),
-            ManaCost::Generic(4353246)
-        ]);
-    }
-
-    #[test]
-    fn parse(){
-        let json = include_str!("./card_test.json");
-        let card = serde_json::from_str::<Card>(json).unwrap();
-        println!("{:?}", card);
     }
 }
