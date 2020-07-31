@@ -21,6 +21,7 @@ mod tests {
     use crate::CostTestStruct;
     use crate::card::mana_cost::{ManaCostCollection, ManaCost};
     use std::rc::Rc;
+    use crate::card::Card;
 
     #[test]
     fn it_works() {
@@ -49,5 +50,12 @@ mod tests {
             ManaCost::Half(Rc::new(ManaCost::Generic(1))),
             ManaCost::Generic(4353246)
         ]);
+    }
+
+    #[test]
+    fn parse(){
+        let json = include_str!("./card_test.json");
+        let card = serde_json::from_str::<Card>(json).unwrap();
+        println!("{:?}", card);
     }
 }

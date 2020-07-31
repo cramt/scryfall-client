@@ -175,3 +175,9 @@ impl<'de> Deserialize<'de> for ManaCostCollection {
         deserializer.deserialize_str(ManaCostCollectionVisitor)
     }
 }
+
+impl From<ManaCostCollection> for Vec<ManaCost> {
+    fn from(x: ManaCostCollection) -> Self {
+        x.array
+    }
+}
