@@ -1,7 +1,10 @@
-mod ManaCost;
-mod ColorIdentity;
-mod Legality;
-mod ScryfallClient;
+use crate::mana_cost::ManaCostCollection;
+use serde::{Deserialize, Serialize};
+
+mod mana_cost;
+mod color;
+mod legality;
+mod scryfall_client;
 
 macro_rules! wait {
     ($e:expr) => {
@@ -9,8 +12,15 @@ macro_rules! wait {
     };
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize)]
+struct CostTestStruct {
+    cost: ManaCostCollection
+}
+
 #[cfg(test)]
 mod tests {
+    use crate::CostTestStruct;
+
     #[test]
     fn it_works() {
         let a = "12345";
@@ -30,6 +40,8 @@ mod tests {
 
     #[test]
     fn mana_cost() {
-        let json = "{cost: {G}}";
+        let json = "{\"cost\": \"{G/P}\"}";
+        let cost = serde_json::from_str::<CostTestStruct>(json).unwrap().cost;
+        println!("{:?}", cost);
     }
 }

@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa521b5b-28bb-4f91-af9a-28dd920bf4e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scryfall.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ColorIdentity.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Legality.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ManaCost.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ScryfallClient.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ColorIdentity.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/color.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Legality.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/legality.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ManaCost.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/mana_cost.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScryfallClient.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/scryfall_client.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +49,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
   </component>
-  <component name="RunManager" selected="Cargo Command.Test tests::it_works">
+  <component name="RunManager" selected="Cargo Command.Test tests::mana_cost">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -104,8 +97,21 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test tests::mana_cost" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test --package scryfall --lib tests::mana_cost -- --exact" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo Command.Test tests::mana_cost" />
         <item itemvalue="Cargo Command.Test tests::it_works" />
         <item itemvalue="Cargo Command.Test tests::idk" />
         <item itemvalue="Cargo Command.Test lib::tests" />
@@ -126,34 +132,50 @@
       <updated>1596112814589</updated>
       <workItem from="1596112815670" duration="885000" />
       <workItem from="1596141341021" duration="808000" />
-      <workItem from="1596142182427" duration="17027000" />
+      <workItem from="1596142182427" duration="18057000" />
     </task>
+    <task id="LOCAL-00001" summary="mana cost is here">
+      <created>1596204504109</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596204504109</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="mana cost is here" />
+    <option name="LAST_COMMIT_MESSAGE" value="mana cost is here" />
   </component>
   <component name="WindowStateProjectService">
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1596195462848">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1596195462848" />
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1596203556598">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1596204502915">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1596203556598" />
-    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1596203556598">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1596204502915" />
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1596205491556">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1596203556598" />
-    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1596203556598">
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1596205491556" />
+    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1596205491555">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1596203556598" />
-    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1596203556598">
+    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1596205491555" />
+    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1596205491555">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1596203556598" />
+    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1596205491555" />
+    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1596205491555">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1596205491555" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1596195490836">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

@@ -1,12 +1,12 @@
 use std::rc::Rc;
-use serde::ser::{Serialize, Serializer, SerializeSeq, SerializeMap};
+use serde::ser::{Serialize, Serializer};
 use serde::{Deserialize, Deserializer};
 use serde::de::{Visitor, Error};
 use serde::export::Formatter;
-use serde::export::fmt::Display;
+
 
 #[derive(Clone, Debug)]
-enum ManaCost {
+pub enum ManaCost {
     Green,
     White,
     Blue,
@@ -31,7 +31,7 @@ enum ManaCost {
 impl ManaCost {
     fn from(s: String) -> Result<ManaCost, &'static str> {
         if s.contains("/") {
-            let raw_values = s.split("/").map(|x| ManaCost::from(s.to_string())).collect::<Vec<Result<ManaCost, &str>>>();
+            let raw_values = s.split("/").map(|x| ManaCost::from(x.to_string())).collect::<Vec<Result<ManaCost, &str>>>();
             let mut values = vec![];
             for v in raw_values {
                 match v {
@@ -106,7 +106,7 @@ impl ToString for ManaCost {
 }
 
 #[derive(Clone, Debug)]
-struct ManaCostCollection {
+pub struct ManaCostCollection {
     array: Vec<ManaCost>
 }
 
