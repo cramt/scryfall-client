@@ -1,9 +1,8 @@
-use std::rc::Rc;
+use serde::de::{Error, Visitor};
+use serde::export::Formatter;
 use serde::ser::{Serialize, Serializer};
 use serde::{Deserialize, Deserializer};
-use serde::de::{Visitor, Error};
-use serde::export::Formatter;
-
+use std::rc::Rc;
 
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub enum ManaCost {
@@ -31,12 +30,15 @@ pub enum ManaCost {
 impl ManaCost {
     fn from(s: String) -> Result<ManaCost, &'static str> {
         if s.contains("/") {
-            let raw_values = s.split("/").map(|x| ManaCost::from(x.to_string())).collect::<Vec<Result<ManaCost, &str>>>();
+            let raw_values = s
+                .split("/")
+                .map(|x| ManaCost::from(x.to_string()))
+                .collect::<Vec<Result<ManaCost, &str>>>();
             let mut values = vec![];
             for v in raw_values {
                 match v {
                     Ok(cost) => values.push(cost),
-                    Err(err) => return Err(&err)
+                    Err(err) => return Err(&err),
                 }
             }
 
@@ -47,7 +49,7 @@ impl ManaCost {
             let result = ManaCost::from(String::from(&s[1..]));
             return match result {
                 Ok(cost) => Ok(ManaCost::Half(Rc::new(cost))),
-                Err(err) => Err(err)
+                Err(err) => Err(err),
             };
         }
         Ok(match s.as_str() {
@@ -70,17 +72,17 @@ impl ManaCost {
             _value => match _value.parse::<u32>() {
                 Err(_) => ManaCost::XGeneric(_value.chars().into_iter().nth(0).unwrap()),
                 Ok(n) => ManaCost::Generic(n),
-            }
+            },
         })
     }
 
     pub fn chained_or(v: Vec<ManaCost>) -> ManaCost {
-        v.into_iter().fold(None, |acc, x| {
-            match acc {
+        v.into_iter()
+            .fold(None, |acc, x| match acc {
                 None => Some(x),
-                Some(acc) => Some(ManaCost::Or(Rc::new(acc), Rc::new(x)))
-            }
-        }).unwrap()
+                Some(acc) => Some(ManaCost::Or(Rc::new(acc), Rc::new(x))),
+            })
+            .unwrap()
     }
 }
 
@@ -104,43 +106,59 @@ impl ToString for ManaCost {
             ManaCost::Phyrexian => "P".to_string(),
             ManaCost::Or(lhs, rhs) => format!("{}/{}", lhs.to_string(), rhs.to_string()),
             ManaCost::Colorless => "C".to_string(),
-            ManaCost::Half(cost) => {
-                match cost.as_ref().clone() {
-                    ManaCost::Generic(n) => if n == 1 { "½".to_string() } else { format!("{}", n / 2) },
-                    _cost => format!("H{}", _cost.to_string())
+            ManaCost::Half(cost) => match cost.as_ref().clone() {
+                ManaCost::Generic(n) => {
+                    if n == 1 {
+                        "½".to_string()
+                    } else {
+                        format!("{}", n / 2)
+                    }
                 }
-            }
-            ManaCost::Snow => "S".to_string()
+                _cost => format!("H{}", _cost.to_string()),
+            },
+            ManaCost::Snow => "S".to_string(),
         }
     }
 }
 
 #[derive(Clone, Debug)]
 pub struct ManaCostCollection {
-    pub array: Vec<ManaCost>
+    pub array: Vec<ManaCost>,
 }
 
 impl ManaCostCollection {
     pub fn new(array: Vec<ManaCost>) -> ManaCostCollection {
-        ManaCostCollection {
-            array
-        }
+        ManaCostCollection { array }
     }
 
     pub fn from(v: String) -> Result<ManaCostCollection, &'static str> {
-        let unparsed = String::from(&v[1..v.len() - 1]).split("}{").map(|s| ManaCost::from(s.to_string())).collect::<Vec<Result<ManaCost, &str>>>();
+        let unparsed = String::from(&v[1..v.len() - 1])
+            .split("}{")
+            .map(|s| ManaCost::from(s.to_string()))
+            .collect::<Vec<Result<ManaCost, &str>>>();
         if let Some(Err(err)) = unparsed.iter().find(|x| x.is_err()) {
             return Err(err);
         }
-        let parsed = unparsed.into_iter().map(|x| x.unwrap()).collect::<Vec<ManaCost>>();
+        let parsed = unparsed
+            .into_iter()
+            .map(|x| x.unwrap())
+            .collect::<Vec<ManaCost>>();
         Ok(ManaCostCollection::new(parsed))
     }
 }
 
 impl Serialize for ManaCostCollection {
-    fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error> where
-        S: Serializer {
-        serializer.serialize_str(self.array.iter().map(|x| format!("{{{}}}", x.to_string())).collect::<String>().as_str())
+    fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+    where
+        S: Serializer,
+    {
+        serializer.serialize_str(
+            self.array
+                .iter()
+                .map(|x| format!("{{{}}}", x.to_string()))
+                .collect::<String>()
+                .as_str(),
+        )
     }
 }
 
@@ -153,25 +171,29 @@ impl<'de> Visitor<'de> for ManaCostCollectionVisitor {
         formatter.write_str("standard mtg cost formatting")
     }
 
-    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E> where
-        E: serde::de::Error, {
+    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
+    where
+        E: serde::de::Error,
+    {
         self.visit_string(v.to_string())
     }
 
-    fn visit_string<E>(self, v: String) -> Result<Self::Value, E> where
-        E: serde::de::Error, {
+    fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
+    where
+        E: serde::de::Error,
+    {
         match ManaCostCollection::from(v) {
             Ok(cost) => Ok(cost),
-            Err(error) => {
-                Err(Error::missing_field(error))
-            }
+            Err(error) => Err(Error::missing_field(error)),
         }
     }
 }
 
 impl<'de> Deserialize<'de> for ManaCostCollection {
-    fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error> where
-        D: Deserializer<'de> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error>
+    where
+        D: Deserializer<'de>,
+    {
         deserializer.deserialize_str(ManaCostCollectionVisitor)
     }
 }

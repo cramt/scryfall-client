@@ -1,6 +1,6 @@
-use serde::{Serialize, Serializer, Deserialize, Deserializer};
-use serde::de::{Visitor, Error};
+use serde::de::{Error, Visitor};
 use serde::export::Formatter;
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 #[derive(Copy, Clone, Debug)]
 pub enum Legality {
@@ -16,8 +16,9 @@ impl ToString for Legality {
             Legality::Legal => "legal",
             Legality::Banned => "banned",
             Legality::NotLegal => "not_legal",
-            Legality::Restricted => "restricted"
-        }.to_string()
+            Legality::Restricted => "restricted",
+        }
+        .to_string()
     }
 }
 
@@ -28,14 +29,16 @@ impl Legality {
             "banned" => Ok(Legality::Banned),
             "not_legal" => Ok(Legality::NotLegal),
             "restricted" => Ok(Legality::Restricted),
-            _ => Err(())
+            _ => Err(()),
         }
     }
 }
 
 impl Serialize for Legality {
-    fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error> where
-        S: Serializer {
+    fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+    where
+        S: Serializer,
+    {
         serializer.serialize_str(self.to_string().as_str())
     }
 }
@@ -49,25 +52,29 @@ impl<'de> Visitor<'de> for LegalityVisitor {
         formatter.write_str("standard mtg cost formatting")
     }
 
-    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E> where
-        E: serde::de::Error, {
+    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
+    where
+        E: serde::de::Error,
+    {
         self.visit_string(v.to_string())
     }
 
-    fn visit_string<E>(self, v: String) -> Result<Self::Value, E> where
-        E: serde::de::Error, {
+    fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
+    where
+        E: serde::de::Error,
+    {
         match Legality::from(v) {
             Ok(cost) => Ok(cost),
-            Err(_) => {
-                Err(Error::missing_field("couldnt parse mtg color"))
-            }
+            Err(_) => Err(Error::missing_field("couldnt parse mtg color")),
         }
     }
 }
 
 impl<'de> Deserialize<'de> for Legality {
-    fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error> where
-        D: Deserializer<'de> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error>
+    where
+        D: Deserializer<'de>,
+    {
         deserializer.deserialize_str(LegalityVisitor)
     }
 }

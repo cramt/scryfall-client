@@ -1,12 +1,12 @@
-use crate::card::color::{Colors};
-use std::collections::{HashMap};
-use crate::card::mana_cost::ManaCostCollection;
+use crate::card::color::Colors;
 use crate::card::legality::Legality;
-use serde::{Serialize, Deserialize};
+use crate::card::mana_cost::ManaCostCollection;
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
-pub mod mana_cost;
-pub mod legality;
 pub mod color;
+pub mod legality;
+pub mod mana_cost;
 
 //https://scryfall.com/docs/api/cards
 #[derive(Clone, Debug, Deserialize, Serialize)]

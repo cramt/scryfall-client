@@ -1,8 +1,5 @@
-mod test;
 mod card;
-
-
-
+mod test;
 
 mod scryfall_client;
 
@@ -12,12 +9,8 @@ macro_rules! wait {
     };
 }
 
-
 #[cfg(test)]
 mod tests {
-    use crate::card::mana_cost::{ManaCostCollection, ManaCost};
-    use std::rc::Rc;
-    use crate::card::Card;
 
     #[test]
     fn it_works() {

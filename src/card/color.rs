@@ -1,6 +1,6 @@
-use serde::{Serialize, Serializer, Deserialize, Deserializer};
-use serde::de::{Visitor, Error};
+use serde::de::{Error, Visitor};
 use serde::export::Formatter;
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 #[derive(Copy, Clone, Debug)]
 pub enum Color {
@@ -19,7 +19,8 @@ impl ToString for Color {
             Color::Black => "B",
             Color::Blue => "U",
             Color::Red => "R",
-        }.to_string()
+        }
+        .to_string()
     }
 }
 
@@ -31,14 +32,16 @@ impl Color {
             "B" => Ok(Color::Black),
             "U" => Ok(Color::Blue),
             "R" => Ok(Color::Red),
-            _ => Err(())
+            _ => Err(()),
         }
     }
 }
 
 impl Serialize for Color {
-    fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error> where
-        S: Serializer {
+    fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
+    where
+        S: Serializer,
+    {
         serializer.serialize_str(self.to_string().as_str())
     }
 }
@@ -52,25 +55,29 @@ impl<'de> Visitor<'de> for ColorVisitor {
         formatter.write_str("standard mtg cost formatting")
     }
 
-    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E> where
-        E: serde::de::Error, {
+    fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
+    where
+        E: serde::de::Error,
+    {
         self.visit_string(v.to_string())
     }
 
-    fn visit_string<E>(self, v: String) -> Result<Self::Value, E> where
-        E: serde::de::Error, {
+    fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
+    where
+        E: serde::de::Error,
+    {
         match Color::from(v) {
             Ok(cost) => Ok(cost),
-            Err(_) => {
-                Err(Error::missing_field("couldnt parse mtg color"))
-            }
+            Err(_) => Err(Error::missing_field("couldnt parse mtg color")),
         }
     }
 }
 
 impl<'de> Deserialize<'de> for Color {
-    fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error> where
-        D: Deserializer<'de> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error>
+    where
+        D: Deserializer<'de>,
+    {
         deserializer.deserialize_str(ColorVisitor)
     }
 }
