@@ -1,5 +1,5 @@
-use crate::card::color::{Color, Colors};
-use std::collections::{HashMap, VecDeque};
+use crate::card::color::{Colors};
+use std::collections::{HashMap};
 use crate::card::mana_cost::ManaCostCollection;
 use crate::card::legality::Legality;
 use serde::{Serialize, Deserialize};

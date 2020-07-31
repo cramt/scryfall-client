@@ -1,8 +1,8 @@
 mod test;
 mod card;
 
-use serde::{Deserialize, Serialize};
-use crate::card::mana_cost::ManaCostCollection;
+
+
 
 mod scryfall_client;
 
@@ -15,7 +15,6 @@ macro_rules! wait {
 
 #[cfg(test)]
 mod tests {
-    use crate::CostTestStruct;
     use crate::card::mana_cost::{ManaCostCollection, ManaCost};
     use std::rc::Rc;
     use crate::card::Card;

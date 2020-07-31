@@ -3,6 +3,7 @@ mod card {
     use crate::card::Card;
     use crate::card::mana_cost::{ManaCost, ManaCostCollection};
     use std::rc::Rc;
+    use serde::{Deserialize, Serialize};
 
     #[derive(Clone, Debug, Serialize, Deserialize)]
     struct CostTestStruct {
