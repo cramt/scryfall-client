@@ -5,7 +5,7 @@ use serde::de::{Visitor, Error};
 use serde::export::Formatter;
 
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub enum ManaCost {
     Green,
     White,
@@ -39,6 +39,8 @@ impl ManaCost {
                     Err(err) => return Err(&err)
                 }
             }
+
+            //TODO: make this support more than 2 types of or
             return Ok(ManaCost::Or(Rc::new(values[0].clone()), Rc::new(values[1].clone())));
         }
         let chars = s.chars().collect::<Vec<char>>();
@@ -107,7 +109,7 @@ impl ToString for ManaCost {
 
 #[derive(Clone, Debug)]
 pub struct ManaCostCollection {
-    array: Vec<ManaCost>
+    pub array: Vec<ManaCost>
 }
 
 impl ManaCostCollection {

@@ -1,9 +1,8 @@
-use crate::mana_cost::ManaCostCollection;
-use serde::{Deserialize, Serialize};
+mod card;
 
-mod mana_cost;
-mod color;
-mod legality;
+use serde::{Deserialize, Serialize};
+use crate::card::mana_cost::ManaCostCollection;
+
 mod scryfall_client;
 
 macro_rules! wait {
@@ -20,6 +19,8 @@ struct CostTestStruct {
 #[cfg(test)]
 mod tests {
     use crate::CostTestStruct;
+    use crate::card::mana_cost::{ManaCostCollection, ManaCost};
+    use std::rc::Rc;
 
     #[test]
     fn it_works() {
@@ -40,8 +41,13 @@ mod tests {
 
     #[test]
     fn mana_cost() {
-        let json = "{\"cost\": \"{G/P}\"}";
+        let json = "{\"cost\": \"{G/P}{R}{½}{4353246}\"}";
         let cost = serde_json::from_str::<CostTestStruct>(json).unwrap().cost;
-        println!("{:?}", cost);
+        assert_eq!(cost.array, vec![
+            ManaCost::Or(Rc::new(ManaCost::Green), Rc::new(ManaCost::Phyrexian)),
+            ManaCost::Red,
+            ManaCost::Half(Rc::new(ManaCost::Generic(1))),
+            ManaCost::Generic(4353246)
+        ]);
     }
 }
