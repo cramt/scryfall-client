@@ -1,8 +1,13 @@
+mod border_color;
+mod rarity;
+
 use crate::card::color::Colors;
 use crate::card::legality::Legality;
 use crate::card::mana_cost::ManaCostCollection;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use crate::card::rarity::Rarity;
+use crate::card::border_color::BorderColor;
 
 pub mod color;
 pub mod legality;
@@ -55,8 +60,7 @@ pub struct Card {
     //print fields
     pub artist: Option<String>,
     pub booster: bool,
-    pub border_color: String,
-    //TODO: only valid strings here are black, borderless, gold, silver, or white, make it an enum
+    pub border_color: BorderColor,
     pub card_back_id: String,
     pub collector_number: String,
     pub content_warning: Option<bool>,
@@ -77,8 +81,7 @@ pub struct Card {
     pub promo: bool,
     pub promo_types: Option<Vec<String>>,
     pub purchase_uris: HashMap<String, String>,
-    pub rarity: String,
-    //TODO: make this an enum, options are common, uncommon, rare, or mythic
+    pub rarity: Rarity,
     pub related_uris: HashMap<String, String>,
     pub released_at: String,
     //TODO: make this a date object
