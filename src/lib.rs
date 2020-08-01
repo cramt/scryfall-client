@@ -1,3 +1,4 @@
+mod search_builder;
 mod card;
 mod test;
 

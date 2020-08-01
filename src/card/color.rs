@@ -9,6 +9,7 @@ pub enum Color {
     Blue,
     Black,
     Red,
+    Colorless,
 }
 
 impl ToString for Color {
@@ -19,6 +20,7 @@ impl ToString for Color {
             Color::Black => "B",
             Color::Blue => "U",
             Color::Red => "R",
+            Color::Colorless => "C",
         }
         .to_string()
     }
@@ -32,6 +34,7 @@ impl Color {
             "B" => Ok(Color::Black),
             "U" => Ok(Color::Blue),
             "R" => Ok(Color::Red),
+            "C" => Ok(Color::Colorless),
             _ => Err(()),
         }
     }
