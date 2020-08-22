@@ -13,24 +13,6 @@ impl Devotion {
             operator: operator.to_string()
         }
     }
-    pub fn eq(devotion: ManaCost) -> Devotion {
-        Devotion::internal_new(devotion, ":")
-    }
-    pub fn less(devotion: ManaCost) -> Devotion {
-        Devotion::internal_new(devotion, "<")
-    }
-    pub fn less_eq(devotion: ManaCost) -> Devotion {
-        Devotion::internal_new(devotion, "<=")
-    }
-    pub fn greater(devotion: ManaCost) -> Devotion {
-        Devotion::internal_new(devotion, ">")
-    }
-    pub fn greater_eq(devotion: ManaCost) -> Devotion {
-        Devotion::internal_new(devotion, ">=")
-    }
-    pub fn not(devotion: ManaCost) -> Devotion {
-        Devotion::internal_new(devotion, "!")
-    }
 }
 
 impl SearchBuilderTrait for Devotion {
@@ -38,3 +20,5 @@ impl SearchBuilderTrait for Devotion {
         format!("devotion{}{}", self.operator, self.devotion.to_string())
     }
 }
+
+crate::equality_operator_implementer!(Devotion, ManaCost);

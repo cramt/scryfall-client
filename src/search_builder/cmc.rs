@@ -1,4 +1,5 @@
 use crate::search_builder::SearchBuilderTrait;
+use crate::search_builder::macros::*;
 
 pub struct Cmc {
     cmc: String,
@@ -11,24 +12,6 @@ impl Cmc {
             cmc: cmc.to_string(),
             operator: operator.to_string(),
         }
-    }
-    pub fn eq(cmc: u32) -> Cmc {
-        Cmc::internal_new(cmc, ":")
-    }
-    pub fn less(cmc: u32) -> Cmc {
-        Cmc::internal_new(cmc, "<")
-    }
-    pub fn less_eq(cmc: u32) -> Cmc {
-        Cmc::internal_new(cmc, "<=")
-    }
-    pub fn greater(cmc: u32) -> Cmc {
-        Cmc::internal_new(cmc, ">")
-    }
-    pub fn greater_eq(cmc: u32) -> Cmc {
-        Cmc::internal_new(cmc, ">=")
-    }
-    pub fn not(cmc: u32) -> Cmc {
-        Cmc::internal_new(cmc, "!")
     }
     pub fn odd() -> Cmc {
         Cmc {
@@ -49,3 +32,5 @@ impl SearchBuilderTrait for Cmc {
         format!("cmc{}{}", self.operator, self.cmc)
     }
 }
+
+crate::equality_operator_implementer!(Cmc);

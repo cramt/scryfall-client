@@ -1,8 +1,7 @@
-mod search_builder;
-mod card;
-mod test;
-
-mod scryfall_client;
+pub mod client;
+pub mod search_builder;
+pub mod card;
+pub mod test;
 
 macro_rules! wait {
     ($e:expr) => {
@@ -12,11 +11,11 @@ macro_rules! wait {
 
 #[cfg(test)]
 mod tests {
+    use inflector::cases::snakecase::to_snake_case;
 
     #[test]
     fn it_works() {
-        let a = "12345";
-        println!("{}", &a[1..]);
+        println!("{}", "idk");
     }
 
     #[test]

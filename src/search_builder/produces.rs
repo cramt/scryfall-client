@@ -13,24 +13,6 @@ impl Produces {
             operator: operator.to_string(),
         }
     }
-    pub fn eq(colors: Colors) -> Produces {
-        Produces::internal_new(colors, ":")
-    }
-    pub fn less(colors: Colors) -> Produces {
-        Produces::internal_new(colors, "<")
-    }
-    pub fn less_eq(colors: Colors) -> Produces {
-        Produces::internal_new(colors, "<=")
-    }
-    pub fn greater(colors: Colors) -> Produces {
-        Produces::internal_new(colors, ">")
-    }
-    pub fn greater_eq(colors: Colors) -> Produces {
-        Produces::internal_new(colors, ">=")
-    }
-    pub fn not(colors: Colors) -> Produces {
-        Produces::internal_new(colors, "!")
-    }
 }
 
 impl SearchBuilderTrait for Produces {
@@ -38,3 +20,5 @@ impl SearchBuilderTrait for Produces {
         format!("produces{}{}", self.operator, self.colors.iter().map(|x| x.to_string()).collect::<String>())
     }
 }
+
+crate::equality_operator_implementer!(Produces, Colors);

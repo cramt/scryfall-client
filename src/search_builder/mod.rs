@@ -1,8 +1,13 @@
+pub mod cmc;
+pub mod rarity;
+pub mod loyalty;
+pub mod toughness;
+pub mod power;
+pub mod is;
 pub mod produces;
 pub mod not;
 pub mod color_identity;
 pub mod devotion;
-pub mod cmc;
 pub mod color;
 pub mod mana;
 pub mod oracle_text;
@@ -34,5 +39,37 @@ impl Builder {
 impl SearchBuilderTrait for Builder {
     fn stringify(&self) -> String {
         self.children.iter().map(|x| x.stringify()).collect::<Vec<String>>().join(" ")
+    }
+}
+
+#[macro_use]
+pub mod macros {
+    #[macro_export]
+    macro_rules! equality_operator_implementer {
+        ($name:ident, $t:tt) => (
+            impl $name {
+                pub fn eq(value: $t) -> $name {
+                    $name::internal_new(value, "=")
+                }
+                pub fn less(value: $t) -> $name {
+                    $name::internal_new(value, "<")
+                }
+                pub fn less_eq(value: $t) -> $name {
+                    $name::internal_new(value, "<=")
+                }
+                pub fn greater(value: $t) -> $name {
+                    $name::internal_new(value, ">")
+                }
+                pub fn greater_eq(value: $t) -> $name {
+                    $name::internal_new(value, ">=")
+                }
+                pub fn not(value: $t) -> $name {
+                    $name::internal_new(value, "!")
+                }
+            }
+        );
+        ($name:ident) => (
+            crate::equality_operator_implementer!($name, u32);
+        )
     }
 }

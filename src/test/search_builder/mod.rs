@@ -6,6 +6,7 @@ mod search_builder {
     use crate::search_builder::magic_type::MagicType;
     use crate::search_builder::not::Not;
     use crate::search_builder::cmc::Cmc;
+    use crate::search_builder::is::*;
 
     #[test]
     fn empty() {
@@ -48,5 +49,26 @@ mod search_builder {
         assert_eq!(Builder::new()
                        .add(Cmc::even())
                        .stringify(), "cmc:even");
+    }
+
+    #[test]
+    fn is_spell() {
+        assert_eq!(Builder::new()
+                       .add(Spell)
+                       .stringify(), "is:spell");
+    }
+
+    #[test]
+    fn is_permanent() {
+        assert_eq!(Builder::new()
+                       .add(Permanent)
+                       .stringify(), "is:permanent");
+    }
+
+    #[test]
+    fn is_buyabox() {
+        assert_eq!(Builder::new()
+                       .add(BuyABox)
+                       .stringify(), "is:buyabox");
     }
 }

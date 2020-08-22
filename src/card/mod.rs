@@ -1,5 +1,5 @@
-mod border_color;
-mod rarity;
+pub mod border_color;
+pub mod rarity;
 
 use crate::card::color::Colors;
 use crate::card::legality::Legality;
