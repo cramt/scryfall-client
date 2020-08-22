@@ -5,9 +5,14 @@ pub struct OracleText {
 }
 
 impl OracleText {
-    pub fn new<S: AsRef<str>>(text: S) -> OracleText {
-        OracleText {
+    pub fn new<S: AsRef<str>>(text: S) -> Self {
+        Self {
             text: String::from(text.as_ref())
+        }
+    }
+    pub fn new_regex<S: AsRef<str>>(regex: S) -> Self {
+        Self {
+            text: format!("/{}/", regex.as_ref()).to_string()
         }
     }
 }

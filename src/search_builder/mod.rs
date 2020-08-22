@@ -1,3 +1,11 @@
+pub mod flavor_text;
+pub mod name;
+pub mod watermark;
+pub mod artist;
+pub mod block;
+pub mod collector_number;
+pub mod set;
+pub mod include_extras;
 pub mod cmc;
 pub mod rarity;
 pub mod loyalty;

@@ -7,7 +7,7 @@ macro_rules! is_struct {
 
         impl SearchBuilderTrait for $name {
             fn stringify(&self) -> String {
-                format!("is:{}", to_snake_case(stringify!($name))).to_string()
+                format!("is:{}", to_snake_case(&stringify!($name)[2..])).to_string()
             }
         }
     );
@@ -23,61 +23,61 @@ macro_rules! is_struct {
     )
 }
 
-is_struct!(Hybrid);
-is_struct!(Phyrexian);
-is_struct!(Split);
-is_struct!(Flip);
-is_struct!(Transform);
-is_struct!(Meld);
-is_struct!(Leveler);
-is_struct!(Spell);
-is_struct!(Permanent);
-is_struct!(Historic);
-is_struct!(Modal);
-is_struct!(Vanilla);
-is_struct!(Frenchvanilla);
-is_struct!(Funny);
-is_struct!(Booster);
-is_struct!(PlaneswalkerDeck);
-is_struct!(League);
-is_struct!(BuyABox, buyabox);
-is_struct!(GiftBox, giftbox);
-is_struct!(IntroPack);
-is_struct!(GameDay, gameday);
-is_struct!(PreRelease, prerelease);
-is_struct!(Release);
-is_struct!(DateStamped, datestamped);
-is_struct!(Commander);
-is_struct!(Brawler);
-is_struct!(Companion);
-is_struct!(Reserved);
-is_struct!(Reprint);
-is_struct!(New);
-is_struct!(Old);
-is_struct!(Hires);
-is_struct!(Foil);
-is_struct!(Full);
-is_struct!(Nonfoil);
-is_struct!(Digital);
-is_struct!(Promo);
-is_struct!(Spotlight);
-is_struct!(Unique);
-is_struct!(Dual);
-is_struct!(ColorShifted, colorshifted);
-is_struct!(Bikeland);
-is_struct!(Bounceland);
-is_struct!(Canopyland);
-is_struct!(Checkland);
-is_struct!(Fastland);
-is_struct!(Fetchland);
-is_struct!(Filterland);
-is_struct!(Gainland);
-is_struct!(Painland);
-is_struct!(Scryland);
-is_struct!(Shadowland);
-is_struct!(Shockland);
-is_struct!(Storageland);
-is_struct!(Creatureland);
-is_struct!(Triland);
-is_struct!(Tangoland);
-is_struct!(Masterpiece);
+is_struct!(IsHybrid);
+is_struct!(IsPhyrexian);
+is_struct!(IsSplit);
+is_struct!(IsFlip);
+is_struct!(IsTransform);
+is_struct!(IsMeld);
+is_struct!(IsLeveler);
+is_struct!(IsSpell);
+is_struct!(IsPermanent);
+is_struct!(IsHistoric);
+is_struct!(IsModal);
+is_struct!(IsVanilla);
+is_struct!(IsFrenchvanilla);
+is_struct!(IsFunny);
+is_struct!(IsBooster);
+is_struct!(IsPlaneswalkerDeck);
+is_struct!(IsLeague);
+is_struct!(IsBuyABox, buyabox);
+is_struct!(IsGiftBox, giftbox);
+is_struct!(IsIntroPack);
+is_struct!(IsGameDay, gameday);
+is_struct!(IsPreRelease, prerelease);
+is_struct!(IsRelease);
+is_struct!(IsDateStamped, datestamped);
+is_struct!(IsCommander);
+is_struct!(IsBrawler);
+is_struct!(IsCompanion);
+is_struct!(IsReserved);
+is_struct!(IsReprint);
+is_struct!(IsNew);
+is_struct!(IsOld);
+is_struct!(IsHires);
+is_struct!(IsFoil);
+is_struct!(IsFull);
+is_struct!(IsNonfoil);
+is_struct!(IsDigital);
+is_struct!(IsPromo);
+is_struct!(IsSpotlight);
+is_struct!(IsUnique);
+is_struct!(IsDual);
+is_struct!(IsColorShifted, colorshifted);
+is_struct!(IsBikeland);
+is_struct!(IsBounceland);
+is_struct!(IsCanopyland);
+is_struct!(IsCheckland);
+is_struct!(IsFastland);
+is_struct!(IsFetchland);
+is_struct!(IsFilterland);
+is_struct!(IsGainland);
+is_struct!(IsPainland);
+is_struct!(IsScryland);
+is_struct!(IsShadowland);
+is_struct!(IsShockland);
+is_struct!(IsStorageland);
+is_struct!(IsCreatureland);
+is_struct!(IsTriland);
+is_struct!(IsTangoland);
+is_struct!(IsMasterpiece);

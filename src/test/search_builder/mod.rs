@@ -54,21 +54,21 @@ mod search_builder {
     #[test]
     fn is_spell() {
         assert_eq!(Builder::new()
-                       .add(Spell)
+                       .add(IsSpell)
                        .stringify(), "is:spell");
     }
 
     #[test]
     fn is_permanent() {
         assert_eq!(Builder::new()
-                       .add(Permanent)
+                       .add(IsPermanent)
                        .stringify(), "is:permanent");
     }
 
     #[test]
     fn is_buyabox() {
         assert_eq!(Builder::new()
-                       .add(BuyABox)
+                       .add(IsBuyABox)
                        .stringify(), "is:buyabox");
     }
 }

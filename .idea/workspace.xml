@@ -9,28 +9,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa521b5b-28bb-4f91-af9a-28dd920bf4e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/macros/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/macros/src/lib.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/mod.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/search_builder/is.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/search_builder/loyalty.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/search_builder/power.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/search_builder/rarity.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/search_builder/toughness.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/artist.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/block.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/collector_number.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/flavor_text.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/include_extras.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/name.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/set.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search_builder/watermark.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scryfall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/scryfall.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/card/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/card/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scryfall_client.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search_builder/cmc.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/cmc.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search_builder/color.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/color.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search_builder/color_identity.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/color_identity.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search_builder/devotion.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/devotion.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search_builder/mana.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/mana.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search_builder/is.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/is.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/search_builder/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search_builder/produces.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/produces.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search_builder/oracle_text.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/oracle_text.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/search_builder/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/search_builder/mod.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +173,7 @@
       <workItem from="1596378082504" duration="4080000" />
       <workItem from="1596386005393" duration="1168000" />
       <workItem from="1596984048859" duration="769000" />
-      <workItem from="1598121769558" duration="3042000" />
+      <workItem from="1598121769558" duration="8111000" />
     </task>
     <task id="LOCAL-00001" summary="mana cost is here">
       <created>1596204504109</created>
@@ -255,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596275923200</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="macro'ed up">
+      <created>1598124974137</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1598124974137</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,45 +270,50 @@
     <MESSAGE value="cargo fmt" />
     <MESSAGE value="rarity and border color enums" />
     <MESSAGE value="search builders" />
-    <option name="LAST_COMMIT_MESSAGE" value="search builders" />
+    <MESSAGE value="macro'ed up" />
+    <option name="LAST_COMMIT_MESSAGE" value="macro'ed up" />
   </component>
   <component name="WindowStateProjectService">
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1596272630728">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1596272630728" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1596275922363">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1598124972735">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1596275922363" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1598124972735" />
     <state x="129" y="58" key="DiffContextDialog" timestamp="1596215112017">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="129" y="58" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1596215112017" />
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1598123850293">
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1598130572986">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598123850293" />
-    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1598123850291">
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598130572986" />
+    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1598130572985">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598123850291" />
-    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1598123850290">
+    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598130572985" />
+    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1598130572985">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598123850290" />
-    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1598123850292">
+    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598130572985" />
+    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1598130572985">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598123850292" />
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1596215121756">
+    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598130572985" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1598124976233">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1596215121756" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1598124976233" />
     <state x="500" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596378726961">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="500" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768@0.0.1366.768" timestamp="1596378726961" />
+    <state x="390" y="117" width="585" height="534" key="find.popup" timestamp="1598130030498">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="390" y="117" width="585" height="534" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1598130030498" />
     <state x="65" y="67" key="new project wizard" timestamp="1596398909333">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -320,9 +322,9 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1598122749795" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1596276914443">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1598130078994">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1596276914443" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1598130078994" />
   </component>
 </project>
