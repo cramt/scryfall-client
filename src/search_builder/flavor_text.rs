@@ -1,24 +1,32 @@
 use crate::search_builder::SearchBuilderTrait;
 
-pub struct Name {
+pub struct FlavorText {
     query: String
 }
 
-impl Name {
+impl FlavorText {
     pub fn new<S: AsRef<str>>(name: S) -> Self {
-        Name {
+        FlavorText {
             query: name.as_ref().to_string()
         }
     }
     pub fn new_regex<S: AsRef<str>>(regex: S) -> Self {
-        Name {
+        FlavorText {
             query: format!("/{}/", regex.as_ref())
         }
     }
 }
 
-impl SearchBuilderTrait for Name {
+impl SearchBuilderTrait for FlavorText {
     fn stringify(&self) -> String {
-        format!("flavor:{}", self.query)
+        if self.query.contains(" ") && match self.query.chars().nth(0) {
+            Some(c) => c != '/',
+            None => true
+        } {
+            format!("flavor:\"{}\"", self.query)
+        }
+        else {
+            format!("flavor:{}", self.query)
+        }
     }
 }

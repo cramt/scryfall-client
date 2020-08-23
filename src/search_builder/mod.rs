@@ -1,3 +1,5 @@
+use serde::export::Formatter;
+
 pub mod flavor_text;
 pub mod name;
 pub mod watermark;
@@ -25,6 +27,12 @@ pub mod format;
 
 pub trait SearchBuilderTrait {
     fn stringify(&self) -> String;
+}
+
+impl std::fmt::Display for dyn SearchBuilderTrait {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.to_string())
+    }
 }
 
 pub struct Builder {
