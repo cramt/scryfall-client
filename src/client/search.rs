@@ -16,11 +16,9 @@ impl Client {
         let mut results = vec![];
         let mut page = 0u32;
         loop {
-            wait_for_rate_limit().await;
             page += 1;
-            let result = self.search_client().form(&[("q", &query), ("page", &page.to_string())]).send().await.map_err(|x| ClientError::Request(x))?;
-            let text = result.text().await.map_err(|x| ClientError::TextDecode(x))?;
-            let card = serde_json::from_str::<SearchResult>(text.as_str()).map_err(|x| ClientError::Deserialize(x))?;
+            let query = self.search_client().form(&[("q", &query), ("page", &page.to_string())]);
+            let card = self.send_request::<SearchResult>(query).await?;
             results.extend(card.data.into_iter());
             if !card.has_more {
                 break;
