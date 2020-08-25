@@ -2,6 +2,7 @@
 mod decklist {
     use crate::decklist::unpopulated_decklist::UnpopulatedDecklist;
     use tokio_test::block_on;
+    use std::collections::HashSet;
 
     #[test]
     fn fetch_novas_cube() {
@@ -9,6 +10,6 @@ mod decklist {
         let initial_size = cube.main.len();
         let cube = block_on(cube.populate()).unwrap();
         let new_size = cube.main.len();
-        assert_eq!(new_size, initial_size)
+        assert_eq!(initial_size, new_size);
     }
 }

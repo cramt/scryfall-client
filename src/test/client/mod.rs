@@ -4,6 +4,7 @@ mod client {
     use crate::search_builder::name::Name;
     use crate::search_builder::SearchBuilderTrait;
     use crate::client::ClientError;
+    use tokio_test::block_on;
 
     #[test]
     fn search_ugin() {
@@ -33,5 +34,12 @@ mod client {
             ClientError::Scryfall(scryfall) => scryfall.code == "not_found",
             _ => false
         })
+    }
+
+    #[test]
+    fn fetch_azcanta() {
+        let result = block_on(Client.collection_by_names(vec!["Search for Azcanta".to_string()])).unwrap();
+        assert_eq!(1, result.len());
+        assert_eq!("Search for Azcanta // Azcanta, the Sunken Ruin", &result[0].name);
     }
 }
