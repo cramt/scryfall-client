@@ -15,14 +15,12 @@ mod card {
         let cost = serde_json::from_str::<CostTestStruct>(json).unwrap().cost;
         assert_eq!(
             cost.costs,
-            vec![
-                vec![
-                    ManaCost::Or(Rc::new(ManaCost::Green), Rc::new(ManaCost::Phyrexian)),
-                    ManaCost::Red,
-                    ManaCost::Half(Rc::new(ManaCost::Generic(1))),
-                    ManaCost::Generic(4353246)
-                ]
-            ]
+            vec![vec![
+                ManaCost::Or(Rc::new(ManaCost::Green), Rc::new(ManaCost::Phyrexian)),
+                ManaCost::Red,
+                ManaCost::Half(Rc::new(ManaCost::Generic(1))),
+                ManaCost::Generic(4353246)
+            ]]
         );
     }
 }

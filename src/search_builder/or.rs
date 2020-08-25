@@ -7,7 +7,10 @@ pub struct Or {
 
 impl Or {
     pub fn new<E1: 'static, E2: 'static>(lhs: E1, rhs: E2) -> Or
-        where E1: SearchBuilderTrait, E2: SearchBuilderTrait {
+    where
+        E1: SearchBuilderTrait,
+        E2: SearchBuilderTrait,
+    {
         Or {
             lhs: Box::new(lhs),
             rhs: Box::new(rhs),

@@ -19,7 +19,8 @@ impl ToString for BorderColor {
             BorderColor::Gold => "gold",
             BorderColor::Silver => "silver",
             BorderColor::White => "white",
-        }.to_string()
+        }
+        .to_string()
     }
 }
 
@@ -38,8 +39,8 @@ impl BorderColor {
 
 impl Serialize for BorderColor {
     fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
-        where
-            S: Serializer,
+    where
+        S: Serializer,
     {
         serializer.serialize_str(self.to_string().as_str())
     }
@@ -55,15 +56,15 @@ impl<'de> Visitor<'de> for BorderColorVisitor {
     }
 
     fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         self.visit_string(v.to_string())
     }
 
     fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         match BorderColor::from(v) {
             Ok(cost) => Ok(cost),
@@ -74,8 +75,8 @@ impl<'de> Visitor<'de> for BorderColorVisitor {
 
 impl<'de> Deserialize<'de> for BorderColor {
     fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error>
-        where
-            D: Deserializer<'de>,
+    where
+        D: Deserializer<'de>,
     {
         deserializer.deserialize_str(BorderColorVisitor)
     }

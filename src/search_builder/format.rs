@@ -1,13 +1,13 @@
 use crate::search_builder::SearchBuilderTrait;
 
 pub struct Format {
-    format_name: String
+    format_name: String,
 }
 
 impl Format {
     pub fn new<S: AsRef<str>>(format_name: S) -> Format {
         Format {
-            format_name: String::from(format_name.as_ref())
+            format_name: String::from(format_name.as_ref()),
         }
     }
 }

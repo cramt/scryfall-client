@@ -1,7 +1,7 @@
-pub mod decklist;
-pub mod client;
-pub mod search_builder;
 pub mod card;
+pub mod client;
+pub mod decklist;
+pub mod search_builder;
 pub mod test;
 
 #[cfg(test)]

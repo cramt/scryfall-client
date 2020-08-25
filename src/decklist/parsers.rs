@@ -18,23 +18,26 @@ impl UnpopulatedDecklist {
             let mut parts = line.split(" ").collect::<VecDeque<&str>>();
             let amount = match match parts.pop_front() {
                 Some(str) => str,
-                _ => return None
-            }.parse::<u16>() {
+                _ => return None,
+            }
+            .parse::<u16>()
+            {
                 Ok(amount) => amount,
-                _ => return None
+                _ => return None,
             };
-            let name: String = parts.into_iter().collect::<Vec<&str>>().join(" ").to_string();
+            let name: String = parts
+                .into_iter()
+                .collect::<Vec<&str>>()
+                .join(" ")
+                .to_string();
             let entry = (amount, name);
             if writing {
                 main.push(entry)
             } else {
                 sideboard.push(entry)
             }
-        };
-        Some(Self {
-            main,
-            sideboard,
-        })
+        }
+        Some(Self { main, sideboard })
     }
 
     pub fn parse_arena<S: ToString>(data: S) -> Option<Self> {
@@ -49,23 +52,26 @@ impl UnpopulatedDecklist {
             let mut parts = line.split(" ").collect::<VecDeque<&str>>();
             let amount = match match parts.pop_front() {
                 Some(str) => str,
-                _ => return None
-            }.parse::<u16>() {
+                _ => return None,
+            }
+            .parse::<u16>()
+            {
                 Ok(amount) => amount,
-                _ => return None
+                _ => return None,
             };
-            let name: String = parts.into_iter().collect::<Vec<&str>>().join(" ").to_string();
+            let name: String = parts
+                .into_iter()
+                .collect::<Vec<&str>>()
+                .join(" ")
+                .to_string();
             let entry = (amount, name);
             if writing {
                 main.push(entry)
             } else {
                 sideboard.push(entry)
             }
-        };
-        Some(Self {
-            main,
-            sideboard,
-        })
+        }
+        Some(Self { main, sideboard })
     }
     pub fn parse_csv<S: ToString>(data: S) -> Option<Self> {
         let mut main = vec![];
@@ -73,7 +79,7 @@ impl UnpopulatedDecklist {
         for result in csv::Reader::from_reader(data.to_string().as_bytes()).records() {
             let record = match result {
                 Ok(record) => record,
-                _ => return None
+                _ => return None,
             };
             if record.len() != 3 {
                 return None;
@@ -83,7 +89,7 @@ impl UnpopulatedDecklist {
             }
             let amount = match record.index(0).parse::<u16>() {
                 Ok(amount) => amount,
-                _ => return None
+                _ => return None,
             };
             let name = record.index(1);
             let position = record.index(2);
@@ -91,12 +97,9 @@ impl UnpopulatedDecklist {
             match position {
                 "main" => main.push(entry),
                 "sideboard" => sideboard.push(entry),
-                _ => return None
+                _ => return None,
             }
         }
-        Some(Self {
-            main,
-            sideboard,
-        })
+        Some(Self { main, sideboard })
     }
 }

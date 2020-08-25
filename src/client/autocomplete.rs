@@ -1,5 +1,5 @@
 use crate::client::{Client, ClientError};
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 struct AutocompleteResult {
@@ -8,7 +8,7 @@ struct AutocompleteResult {
     pub data: Vec<String>,
 }
 
-impl Client{
+impl Client {
     pub async fn autocomplete<S: ToString>(&self, name: S) -> Result<Vec<String>, ClientError> {
         let name = name.to_string();
         let query = self.autocomplete_client().form(&[("q", &name)]);

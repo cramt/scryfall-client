@@ -2,7 +2,7 @@ use crate::search_builder::SearchBuilderTrait;
 use inflector::cases::snakecase::to_snake_case;
 
 macro_rules! is_struct {
-    ($name:ident) => (
+    ($name:ident) => {
         pub struct $name;
 
         impl SearchBuilderTrait for $name {
@@ -10,9 +10,9 @@ macro_rules! is_struct {
                 format!("is:{}", to_snake_case(&stringify!($name)[2..])).to_string()
             }
         }
-    );
+    };
 
-    ($name:ident, $second:ident) => (
+    ($name:ident, $second:ident) => {
         pub struct $name;
 
         impl SearchBuilderTrait for $name {
@@ -20,7 +20,7 @@ macro_rules! is_struct {
                 format!("is:{}", stringify!($second)).to_string()
             }
         }
-    )
+    };
 }
 
 is_struct!(IsHybrid);

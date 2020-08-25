@@ -134,11 +134,15 @@ impl Default for ManaCostCollection {
 
 impl ToString for ManaCostCollection {
     fn to_string(&self) -> String {
-        self.costs.iter()
-            .map(|x| x.into_iter()
-                .map(|y| format!("{{{}}}", y.to_string()))
-                .collect::<String>())
-            .collect::<Vec<String>>().join(" // ")
+        self.costs
+            .iter()
+            .map(|x| {
+                x.into_iter()
+                    .map(|y| format!("{{{}}}", y.to_string()))
+                    .collect::<String>()
+            })
+            .collect::<Vec<String>>()
+            .join(" // ")
     }
 }
 
@@ -165,24 +169,27 @@ impl ManaCostCollection {
                 .collect::<Vec<ManaCost>>();
             Ok(parsed)
         }
-        let results = v.split(" // ").map(|x| individual_parse(x.to_string())).collect::<Vec<Result<Vec<ManaCost>, &str>>>();
+        let results = v
+            .split(" // ")
+            .map(|x| individual_parse(x.to_string()))
+            .collect::<Vec<Result<Vec<ManaCost>, &str>>>();
         for result in &results {
             if let Err(err) = result {
                 return Err(err);
             }
-        };
-        Ok(ManaCostCollection::new(results.into_iter().map(|x| x.unwrap()).collect()))
+        }
+        Ok(ManaCostCollection::new(
+            results.into_iter().map(|x| x.unwrap()).collect(),
+        ))
     }
 }
 
 impl Serialize for ManaCostCollection {
     fn serialize<S>(&self, serializer: S) -> Result<<S as Serializer>::Ok, <S as Serializer>::Error>
-        where
-            S: Serializer,
+    where
+        S: Serializer,
     {
-        serializer.serialize_str(
-            self.to_string().as_str()
-        )
+        serializer.serialize_str(self.to_string().as_str())
     }
 }
 
@@ -196,15 +203,15 @@ impl<'de> Visitor<'de> for ManaCostCollectionVisitor {
     }
 
     fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         self.visit_string(v.to_string())
     }
 
     fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         match ManaCostCollection::from(v) {
             Ok(cost) => Ok(cost),
@@ -215,8 +222,8 @@ impl<'de> Visitor<'de> for ManaCostCollectionVisitor {
 
 impl<'de> Deserialize<'de> for ManaCostCollection {
     fn deserialize<D>(deserializer: D) -> Result<Self, <D as Deserializer<'de>>::Error>
-        where
-            D: Deserializer<'de>,
+    where
+        D: Deserializer<'de>,
     {
         deserializer.deserialize_str(ManaCostCollectionVisitor)
     }

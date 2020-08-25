@@ -1,5 +1,5 @@
-use crate::search_builder::SearchBuilderTrait;
 use crate::card::mana_cost::ManaCost;
+use crate::search_builder::SearchBuilderTrait;
 
 pub struct Devotion {
     devotion: ManaCost,
@@ -10,7 +10,7 @@ impl Devotion {
     fn internal_new(devotion: ManaCost, operator: &str) -> Devotion {
         Devotion {
             devotion,
-            operator: operator.to_string()
+            operator: operator.to_string(),
         }
     }
 }

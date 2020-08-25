@@ -1,5 +1,5 @@
-use crate::search_builder::SearchBuilderTrait;
 use crate::card::mana_cost::ManaCost;
+use crate::search_builder::SearchBuilderTrait;
 
 pub struct Mana {
     mana_cost: ManaCost,
@@ -10,7 +10,7 @@ impl Mana {
     fn internal_new(mana_cost: ManaCost, operator: &str) -> Mana {
         Mana {
             mana_cost,
-            operator: operator.to_string()
+            operator: operator.to_string(),
         }
     }
 }

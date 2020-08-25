@@ -7,7 +7,7 @@ pub enum Rarity {
     Common,
     Uncommon,
     Rare,
-    Mythic
+    Mythic,
 }
 
 impl ToString for Rarity {

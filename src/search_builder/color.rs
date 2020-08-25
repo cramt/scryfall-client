@@ -1,5 +1,5 @@
-use crate::search_builder::SearchBuilderTrait;
 use crate::card::color::Colors;
+use crate::search_builder::SearchBuilderTrait;
 
 pub trait ColorArgument: ToString {}
 

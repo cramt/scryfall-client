@@ -1,5 +1,5 @@
-use crate::search_builder::SearchBuilderTrait;
 use crate::card::color::Colors;
+use crate::search_builder::SearchBuilderTrait;
 
 pub struct Produces {
     colors: Colors,
@@ -17,7 +17,14 @@ impl Produces {
 
 impl SearchBuilderTrait for Produces {
     fn stringify(&self) -> String {
-        format!("produces{}{}", self.operator, self.colors.iter().map(|x| x.to_string()).collect::<String>())
+        format!(
+            "produces{}{}",
+            self.operator,
+            self.colors
+                .iter()
+                .map(|x| x.to_string())
+                .collect::<String>()
+        )
     }
 }
 

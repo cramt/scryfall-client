@@ -1,18 +1,18 @@
 use crate::search_builder::SearchBuilderTrait;
 
 pub struct Name {
-    query: String
+    query: String,
 }
 
 impl Name {
     pub fn new_exact<S: AsRef<str>>(name: S) -> Self {
         Name {
-            query: name.as_ref().to_string()
+            query: name.as_ref().to_string(),
         }
     }
     pub fn new_regex<S: AsRef<str>>(regex: S) -> Self {
         Name {
-            query: format!("/{}/", regex.as_ref())
+            query: format!("/{}/", regex.as_ref()),
         }
     }
     pub fn new_fuzzy<S: AsRef<str>>(name: S) -> Self {

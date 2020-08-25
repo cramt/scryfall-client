@@ -1,6 +1,6 @@
-use crate::client::{Client, ClientError};
 use crate::card::Card;
-use serde::{Serialize, Deserialize};
+use crate::client::{Client, ClientError};
+use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 struct SearchResult {
@@ -17,13 +17,15 @@ impl Client {
         let mut page = 0u32;
         loop {
             page += 1;
-            let query = self.search_client().form(&[("q", &query), ("page", &page.to_string())]);
+            let query = self
+                .search_client()
+                .form(&[("q", &query), ("page", &page.to_string())]);
             let card = self.send_request::<SearchResult>(query).await?;
             results.extend(card.data.into_iter());
             if !card.has_more {
                 break;
             }
-        };
+        }
         Ok(results)
     }
 }

@@ -1,13 +1,13 @@
 pub mod border_color;
 pub mod rarity;
 
+use crate::card::border_color::BorderColor;
 use crate::card::color::Colors;
 use crate::card::legality::Legality;
 use crate::card::mana_cost::ManaCostCollection;
+use crate::card::rarity::Rarity;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use crate::card::rarity::Rarity;
-use crate::card::border_color::BorderColor;
 
 pub mod color;
 pub mod legality;

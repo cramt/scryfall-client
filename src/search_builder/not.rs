@@ -5,8 +5,10 @@ pub struct Not {
 }
 
 impl Not {
-    pub fn new<E: 'static>(inner: E,) -> Not
-        where E: SearchBuilderTrait {
+    pub fn new<E: 'static>(inner: E) -> Not
+    where
+        E: SearchBuilderTrait,
+    {
         Not {
             inner: Box::new(inner),
         }
