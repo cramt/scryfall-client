@@ -708,6 +708,7 @@ version = "0.1.0"
 dependencies = [
  "Inflector",
  "chrono",
+ "lazy_static",
  "macros",
  "reqwest",
  "serde",

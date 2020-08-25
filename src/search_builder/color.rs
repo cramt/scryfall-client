@@ -1,15 +1,22 @@
 use crate::search_builder::SearchBuilderTrait;
 use crate::card::color::Colors;
+use serde::export::fmt::Display;
+
+pub trait ColorArgument: ToString {}
+
+impl ColorArgument for u32 {}
+
+impl ColorArgument for Colors {}
 
 pub struct Color {
-    colors: Colors,
+    colors: String,
     operator: String,
 }
 
 impl Color {
-    fn internal_new(colors: Colors, operator: &str) -> Color {
+    fn internal_new<T: ColorArgument>(colors: T, operator: &str) -> Color {
         Color {
-            colors,
+            colors: colors.to_string(),
             operator: operator.to_string(),
         }
     }
@@ -17,8 +24,8 @@ impl Color {
 
 impl SearchBuilderTrait for Color {
     fn stringify(&self) -> String {
-        format!("c{}{}", self.operator, self.colors.iter().map(|x| x.to_string()).collect::<String>())
+        format!("c{}{}", self.operator, self.colors)
     }
 }
 
-crate::equality_operator_implementer!(Color, Colors);
+crate::equality_operator_implementer_trait!(Color, ColorArgument);

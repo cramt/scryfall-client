@@ -1,6 +1,7 @@
 use serde::de::{Error, Visitor};
 use serde::export::Formatter;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
+use std::ops::{Deref, DerefMut};
 
 #[derive(Copy, Clone, Debug)]
 pub enum Color {
@@ -85,4 +86,25 @@ impl<'de> Deserialize<'de> for Color {
     }
 }
 
-pub type Colors = Vec<Color>;
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct Colors(Vec<Color>);
+
+impl ToString for Colors {
+    fn to_string(&self) -> String {
+        self.iter().map(|x| x.to_string()).collect::<String>()
+    }
+}
+
+impl Deref for Colors {
+    type Target = Vec<Color>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl DerefMut for Colors {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}

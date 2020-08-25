@@ -58,6 +58,12 @@ impl SearchBuilderTrait for Builder {
     }
 }
 
+pub fn all_cards() -> Builder{
+    Builder::new()
+        .add(color::Color::greater_eq(0))
+        .add(include_extras::IncludeExtras)
+}
+
 #[macro_use]
 pub mod macros {
     #[macro_export]
@@ -86,6 +92,32 @@ pub mod macros {
         );
         ($name:ident) => (
             crate::equality_operator_implementer!($name, u32);
+        )
+    }
+
+    #[macro_export]
+    macro_rules! equality_operator_implementer_trait {
+        ($name:ident, $t:tt) => (
+            impl $name {
+                pub fn eq<T: $t>(value: T) -> $name {
+                    $name::internal_new(value, "=")
+                }
+                pub fn less<T: $t>(value: T) -> $name {
+                    $name::internal_new(value, "<")
+                }
+                pub fn less_eq<T: $t>(value: T) -> $name {
+                    $name::internal_new(value, "<=")
+                }
+                pub fn greater<T: $t>(value: T) -> $name {
+                    $name::internal_new(value, ">")
+                }
+                pub fn greater_eq<T: $t>(value: T) -> $name {
+                    $name::internal_new(value, ">=")
+                }
+                pub fn not<T: $t>(value: T) -> $name {
+                    $name::internal_new(value, "!")
+                }
+            }
         )
     }
 }
