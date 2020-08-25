@@ -43,4 +43,11 @@ impl UnpopulatedDecklist {
             sideboard,
         })
     }
+
+    pub fn to_raw(&self) -> String {
+        fn join(v: &Vec<(u16, String)>) -> String {
+            v.into_iter().map(|(amount, name)| format!("{} {}", amount, name).to_string()).collect::<Vec<String>>().join("\r\n")
+        }
+        format!("{}\r\nSideboard:\r\n{}", join(&self.main), join(&self.sideboard))
+    }
 }

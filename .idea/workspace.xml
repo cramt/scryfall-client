@@ -9,13 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa521b5b-28bb-4f91-af9a-28dd920bf4e1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macros/Cargo.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/macros/src/lib.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scryfall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/scryfall-client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decklist/populated_decklist.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/decklist/populated_decklist.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decklist/unpopulated_decklist.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/decklist/unpopulated_decklist.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +50,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="org.rust.disableDetachedFileInspectionD:/projects/scryfall/macros/src/lib.rs" value="true" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -121,7 +118,7 @@
       <workItem from="1598190229312" duration="28659000" />
       <workItem from="1598355072542" duration="199000" />
       <workItem from="1598355305274" duration="1371000" />
-      <workItem from="1598357062166" duration="55000" />
+      <workItem from="1598357062166" duration="1585000" />
     </task>
     <task id="LOCAL-00001" summary="mana cost is here">
       <created>1596204504109</created>
@@ -256,8 +253,18 @@
       <option name="project" value="LOCAL" />
       <updated>1598356553468</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="renamed to scryfall-client">
+      <created>1598357150854</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1598357150854</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
+  </component>
+  <component name="TerminalProjectNonSharedOptionsProvider">
+    <option name="shellPath" value="D:\programs\PowerShell\7\pwsh.exe" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -283,7 +290,8 @@
     <MESSAGE value="decklist" />
     <MESSAGE value="fixed a bunch of bugs" />
     <MESSAGE value="fixed transform cards not working when populating a decklist" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed transform cards not working when populating a decklist" />
+    <MESSAGE value="renamed to scryfall-client" />
+    <option name="LAST_COMMIT_MESSAGE" value="renamed to scryfall-client" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598357118700">
@@ -302,34 +310,38 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1598353068144" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1598356552584">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1598357149648">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1598356552584" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1598357149648" />
     <state x="129" y="58" key="DiffContextDialog" timestamp="1596215112017">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="129" y="58" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1596215112017" />
-    <state width="1323" height="194" key="GridCell.Tab.0.bottom" timestamp="1598356687609">
+    <state width="1323" height="194" key="GridCell.Tab.0.bottom" timestamp="1598358626412">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598356687609" />
-    <state width="1323" height="194" key="GridCell.Tab.0.center" timestamp="1598356687608">
+    <state width="1323" height="194" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598358626412" />
+    <state width="1323" height="194" key="GridCell.Tab.0.center" timestamp="1598358626411">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598356687608" />
-    <state width="1323" height="194" key="GridCell.Tab.0.left" timestamp="1598356687608">
+    <state width="1323" height="194" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598358626411" />
+    <state width="1323" height="194" key="GridCell.Tab.0.left" timestamp="1598358626411">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598356687608" />
-    <state width="1323" height="194" key="GridCell.Tab.0.right" timestamp="1598356687608">
+    <state width="1323" height="194" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598358626411" />
+    <state width="1323" height="194" key="GridCell.Tab.0.right" timestamp="1598358626411">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598356687608" />
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1598356555710">
+    <state width="1323" height="194" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598358626411" />
+    <state x="184" y="28" key="SettingsEditor" timestamp="1598357233160">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1598356555710" />
+    <state x="184" y="28" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1598357233160" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1598357151026">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1598357151026" />
     <state x="500" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596378726961">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
