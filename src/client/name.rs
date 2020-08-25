@@ -1,4 +1,4 @@
-use crate::client::{Client, ClientError, ScryfallError, wait_for_rate_limit};
+use crate::client::{Client, ClientError};
 use crate::card::Card;
 
 impl Client {

@@ -6,14 +6,13 @@ mod name;
 mod search;
 mod client_paths;
 
-use crate::card::Card;
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, Duration};
 use std::sync::Mutex;
 use std::thread::sleep;
 use std::ops::Deref;
 use lazy_static::*;
-use reqwest::{IntoUrl, Response};
+use reqwest::{IntoUrl};
 use serde::de::DeserializeOwned;
 
 #[derive(Debug)]

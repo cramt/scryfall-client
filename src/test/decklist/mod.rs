@@ -2,7 +2,6 @@
 mod decklist {
     use crate::decklist::unpopulated_decklist::UnpopulatedDecklist;
     use tokio_test::block_on;
-    use std::collections::HashSet;
 
     #[test]
     fn fetch_novas_cube() {

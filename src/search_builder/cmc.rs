@@ -1,5 +1,4 @@
 use crate::search_builder::SearchBuilderTrait;
-use crate::search_builder::macros::*;
 
 pub struct Cmc {
     cmc: String,

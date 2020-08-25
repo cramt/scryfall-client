@@ -43,8 +43,8 @@ impl UnpopulatedDecklist {
         let mut writing = true;
         for line in data.to_string().lines() {
             if line.is_empty() {
-                continue;
                 writing = false;
+                continue;
             }
             let mut parts = line.split(" ").collect::<VecDeque<&str>>();
             let amount = match match parts.pop_front() {

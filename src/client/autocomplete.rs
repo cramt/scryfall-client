@@ -1,4 +1,4 @@
-use crate::client::{Client, ClientError, wait_for_rate_limit, ScryfallError};
+use crate::client::{Client, ClientError};
 use serde::{Serialize, Deserialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]

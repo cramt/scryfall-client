@@ -1,6 +1,5 @@
 use crate::search_builder::SearchBuilderTrait;
 use crate::card::color::Colors;
-use serde::export::fmt::Display;
 
 pub trait ColorArgument: ToString {}
 

@@ -1,5 +1,4 @@
 use crate::search_builder::SearchBuilderTrait;
-use crate::card::Card;
 
 use crate::card::rarity::Rarity as RarityEnum;
 
