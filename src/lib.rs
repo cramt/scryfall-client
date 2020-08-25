@@ -13,10 +13,13 @@ macro_rules! wait {
 #[cfg(test)]
 mod tests {
     use inflector::cases::snakecase::to_snake_case;
+    use std::collections::HashMap;
 
     #[test]
     fn it_works() {
-        println!("{}", "idk");
+        let mut map = HashMap::new();
+        map.insert("idk", 2);
+        println!("{:?}", serde_json::to_string(&map));
     }
 
     #[test]

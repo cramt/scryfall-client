@@ -1,6 +1,6 @@
-use serde::{Serialize, Deserialize};
+use std::collections::HashMap;
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug)]
 pub struct CardIdentifier{
     key: String,
     value: String
@@ -42,5 +42,11 @@ impl CardIdentifier {
             key: String::from("name"),
             value: name.to_string()
         }
+    }
+
+    pub fn to_map(&self) -> HashMap<String, String> {
+        let mut map = HashMap::new();
+        map.insert(self.key.clone(), self.value.clone());
+        map
     }
 }

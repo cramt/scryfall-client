@@ -46,6 +46,7 @@ pub struct Card {
     pub legalities: HashMap<String, Legality>,
     pub life_modifier: Option<String>,
     pub loyalty: Option<String>,
+    #[serde(default)]
     pub mana_cost: ManaCostCollection,
     pub name: String,
     pub nonfoil: bool,

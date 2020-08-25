@@ -34,9 +34,4 @@ mod client {
             _ => false
         })
     }
-
-    #[test]
-    fn fetch_novas_cube() {
-
-    }
 }

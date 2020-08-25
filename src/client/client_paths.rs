@@ -15,5 +15,6 @@ impl Client {
     }
     pub(super) fn collection_client(&self) -> reqwest::RequestBuilder {
         self.post("https://api.scryfall.com/cards/collection")
+            .header("Content-Type", "application/json")
     }
 }
