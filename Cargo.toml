@@ -13,6 +13,7 @@ chrono = { version = "0.4", features = ["serde"] }
 Inflector = "0.11.4"
 lazy_static = "1.4.0"
 macros = {path = "./macros"}
+csv = "1.1"
 
 [workspace]
 members = [

@@ -9,14 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa521b5b-28bb-4f91-af9a-28dd920bf4e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/card_identifier.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/collection.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/random.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decklist/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decklist/parsers.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decklist/populated_decklist.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decklist/unpopulated_decklist.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/client_paths.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/client_paths.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/name.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/name.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search_builder/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/search_builder/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/client/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/client/mod.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +159,7 @@
       <workItem from="1596386005393" duration="1168000" />
       <workItem from="1596984048859" duration="769000" />
       <workItem from="1598121769558" duration="8742000" />
-      <workItem from="1598190229312" duration="20399000" />
+      <workItem from="1598190229312" duration="24328000" />
     </task>
     <task id="LOCAL-00001" summary="mana cost is here">
       <created>1596204504109</created>
@@ -265,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598341342486</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="collection client created">
+      <created>1598346891738</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1598346891738</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +296,8 @@
     <MESSAGE value="implemented search" />
     <MESSAGE value="more accurate search builder, more client apis" />
     <MESSAGE value="cleaned up client code" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up client code" />
+    <MESSAGE value="collection client created" />
+    <option name="LAST_COMMIT_MESSAGE" value="collection client created" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598198042528">
@@ -299,34 +308,34 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1598339212110" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1598341341785">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1598346890975">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1598341341785" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1598346890975" />
     <state x="129" y="58" key="DiffContextDialog" timestamp="1596215112017">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="129" y="58" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1596215112017" />
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1598345952877">
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1598350587365">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598345952877" />
-    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1598345952877">
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598350587365" />
+    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1598350587365">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598345952877" />
-    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1598345952877">
+    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598350587365" />
+    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1598350587365">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598345952877" />
-    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1598345952877">
+    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598350587365" />
+    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1598350587365">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598345952877" />
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1598339761405">
+    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598350587365" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1598346893579">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1598339761405" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1598346893579" />
     <state x="500" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596378726961">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -343,9 +352,9 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1598122749795" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1598192331185">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1598349399742">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1598192331185" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1598349399742" />
   </component>
 </project>
