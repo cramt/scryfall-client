@@ -1,3 +1,6 @@
+mod collection;
+mod card_identifier;
+mod random;
 mod autocomplete;
 mod name;
 mod search;
@@ -18,6 +21,7 @@ pub enum ClientError {
     Request(reqwest::Error),
     TextDecode(reqwest::Error),
     Deserialize(serde_json::Error),
+    Serialize(serde_json::Error),
     Scryfall(ScryfallError),
 }
 

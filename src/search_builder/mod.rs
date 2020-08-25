@@ -29,7 +29,7 @@ pub trait SearchBuilderTrait {
     fn stringify(&self) -> String;
 }
 
-impl std::fmt::Display for dyn SearchBuilderTrait {
+impl std::fmt::Display for Box<dyn SearchBuilderTrait> {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.to_string())
     }
@@ -50,18 +50,18 @@ impl Builder {
         self.children.push(Box::new(search_builder));
         self
     }
+
+    pub fn all_cards() -> Builder {
+        Builder::new()
+            .add(color::Color::greater_eq(0))
+            .add(include_extras::IncludeExtras)
+    }
 }
 
 impl SearchBuilderTrait for Builder {
     fn stringify(&self) -> String {
         self.children.iter().map(|x| x.stringify()).collect::<Vec<String>>().join(" ")
     }
-}
-
-pub fn all_cards() -> Builder{
-    Builder::new()
-        .add(color::Color::greater_eq(0))
-        .add(include_extras::IncludeExtras)
 }
 
 #[macro_use]
