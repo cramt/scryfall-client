@@ -1,5 +1,5 @@
 [package]
-name = "scryfall"
+name = "scryfall-client"
 version = "0.1.0"
 authors = ["Alexandra Østermark <alex.cramt@gmail.com>"]
 edition = "2018"
@@ -8,14 +8,10 @@ edition = "2018"
 reqwest = "0.10.7"
 tokio-test = "0.2.1"
 serde_json = "1.0.57"
-serde = { version = "1.0.114", features = ["derive"]}
+serde = { version = "1.0.115", features = ["derive"]}
 chrono = { version = "0.4", features = ["serde"] }
 Inflector = "0.11.4"
 lazy_static = "1.4.0"
-macros = {path = "./macros"}
 csv = "1.1"
 
 [workspace]
-members = [
-    "macros",
-]
