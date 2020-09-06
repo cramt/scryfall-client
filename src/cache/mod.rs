@@ -47,7 +47,7 @@ impl ScryfallCache {
         self.io.get(name)
     }
 
-    pub async fn iter(&self) -> Result<CacheIterator> {
+    pub async fn iter<'a>(&'a self) -> Result<CacheIterator<'a>> {
         self.check().await?;
         Ok(CacheIterator {
             inner: &self,
