@@ -1,14 +1,14 @@
 use crate::card::Card;
 use crate::client::get_unix_time;
 use eyre::Result;
-use rayon::iter::IntoParallelIterator;
+
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use std::ffi::OsString;
 use std::fs::{read_dir, remove_file, File};
-use std::io::{Read, Write};
-use std::path::{Path, PathBuf};
-use std::time::SystemTime;
+use std::io::{Write};
+use std::path::{PathBuf};
+
 
 #[derive(Debug, Deserialize, Serialize)]
 pub(crate) struct MetaData {
@@ -61,7 +61,7 @@ impl IoCache {
         if !path.exists() {
             return Ok(None);
         }
-        let mut file = File::open(path)?;
+        let file = File::open(path)?;
         let result: T = bincode::deserialize_from(file)?;
         Ok(Some(result))
     }
