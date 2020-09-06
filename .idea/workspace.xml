@@ -3,20 +3,36 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="CargoProjects">
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/macros/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa521b5b-28bb-4f91-af9a-28dd920bf4e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cache/cache_iterator.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cache/io_cache.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cache/mod.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decklist/populated_decklist.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/decklist/populated_decklist.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decklist/unpopulated_decklist.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/decklist/unpopulated_decklist.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,6 +43,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KotlinMultiplatform">
+    <executables />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="9qo2lytd" />
@@ -46,11 +65,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../programs/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/search_builder" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="org.rust.disableDetachedFileInspectionD:/projects/scryfall/macros/src/lib.rs" value="true" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -64,15 +84,18 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -118,7 +141,14 @@
       <workItem from="1598190229312" duration="28659000" />
       <workItem from="1598355072542" duration="199000" />
       <workItem from="1598355305274" duration="1371000" />
-      <workItem from="1598357062166" duration="1585000" />
+      <workItem from="1598357062166" duration="2401000" />
+      <workItem from="1598360045264" duration="618000" />
+      <workItem from="1598360924811" duration="95000" />
+      <workItem from="1598361043446" duration="1676000" />
+      <workItem from="1598543629292" duration="73000" />
+      <workItem from="1598885089152" duration="1652000" />
+      <workItem from="1598951321795" duration="17000" />
+      <workItem from="1599407356868" duration="7903000" />
     </task>
     <task id="LOCAL-00001" summary="mana cost is here">
       <created>1596204504109</created>
@@ -260,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598357150854</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="returning a raw decklist is now supported">
+      <created>1598358687069</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1598358687069</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TerminalProjectNonSharedOptionsProvider">
@@ -291,9 +328,14 @@
     <MESSAGE value="fixed a bunch of bugs" />
     <MESSAGE value="fixed transform cards not working when populating a decklist" />
     <MESSAGE value="renamed to scryfall-client" />
-    <option name="LAST_COMMIT_MESSAGE" value="renamed to scryfall-client" />
+    <MESSAGE value="returning a raw decklist is now supported" />
+    <option name="LAST_COMMIT_MESSAGE" value="returning a raw decklist is now supported" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="435" y="207" key="#Notifications" timestamp="1598360054771">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="435" y="207" key="#Notifications/0.0.1366.768@0.0.1366.768" timestamp="1598360054771" />
     <state x="137" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598357118700">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -306,61 +348,89 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="443" y="185" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1598350821519" />
-    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1598353068144">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="686" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1599414769422">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1598353068144" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1598357149648">
+    <state x="686" y="139" key="#com.intellij.ide.util.MemberChooser/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599414769422" />
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1598358686300">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1598357149648" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1598358686300" />
     <state x="129" y="58" key="DiffContextDialog" timestamp="1596215112017">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="129" y="58" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1596215112017" />
-    <state width="1323" height="194" key="GridCell.Tab.0.bottom" timestamp="1598358626412">
+    <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1598362438291">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598358626412" />
-    <state width="1323" height="194" key="GridCell.Tab.0.center" timestamp="1598358626411">
+    <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1598362438291" />
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom" timestamp="1599413397649">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state width="1877" height="297" key="GridCell.Tab.0.bottom/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599413397649" />
+    <state width="1877" height="297" key="GridCell.Tab.0.center" timestamp="1599413397649">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state width="1877" height="297" key="GridCell.Tab.0.center/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599413397649" />
+    <state width="1877" height="297" key="GridCell.Tab.0.left" timestamp="1599413397648">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state width="1877" height="297" key="GridCell.Tab.0.left/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599413397648" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right" timestamp="1599413397649">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state width="1877" height="297" key="GridCell.Tab.0.right/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599413397649" />
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1598362733244">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1598358626411" />
-    <state width="1323" height="194" key="GridCell.Tab.0.left" timestamp="1598358626411">
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state width="1323" height="238" key="GridCell.Tab.1.center" timestamp="1598362733244">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1598358626411" />
-    <state width="1323" height="194" key="GridCell.Tab.0.right" timestamp="1598358626411">
+    <state width="1323" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state width="1323" height="238" key="GridCell.Tab.1.left" timestamp="1598362733244">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="194" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1598358626411" />
-    <state x="184" y="28" key="SettingsEditor" timestamp="1598357233160">
+    <state width="1323" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state width="1323" height="238" key="GridCell.Tab.1.right" timestamp="1598362733244">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="184" y="28" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1598357233160" />
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1598357151026">
+    <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state x="184" y="28" key="SettingsEditor" timestamp="1598362712455">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1598357151026" />
+    <state x="184" y="28" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1598362712455" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1598358687548">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1598358687548" />
     <state x="500" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596378726961">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="500" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768@0.0.1366.768" timestamp="1596378726961" />
-    <state x="390" y="117" width="585" height="534" key="find.popup" timestamp="1598355726879">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="548" y="165" width="823" height="751" key="find.popup" timestamp="1599413598001">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="390" y="117" width="585" height="534" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1598355726879" />
-    <state x="65" y="67" key="new project wizard" timestamp="1596398909333">
+    <state x="548" y="165" width="823" height="751" key="find.popup/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599413598001" />
+    <state x="65" y="8" key="new project wizard" timestamp="1598543701368">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="65" y="67" key="new project wizard/0.0.1366.768@0.0.1366.768" timestamp="1596398909333" />
-    <state x="339" y="172" key="run.anything.popup" timestamp="1598351963200">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="65" y="8" key="new project wizard/0.0.1366.768@0.0.1366.768" timestamp="1598543701368" />
+    <state x="476" y="242" key="run.anything.popup" timestamp="1599408322086">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1598351963200" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1598353629453">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="476" y="242" key="run.anything.popup/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599408322086" />
+    <state x="486" y="125" width="945" height="954" key="search.everywhere.popup" timestamp="1599412940023">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1598353629453" />
+    <state x="486" y="125" width="945" height="954" key="search.everywhere.popup/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599412940023" />
   </component>
 </project>

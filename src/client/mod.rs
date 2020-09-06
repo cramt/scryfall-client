@@ -9,6 +9,7 @@ mod search;
 use lazy_static::*;
 use reqwest::IntoUrl;
 use serde::de::DeserializeOwned;
+use serde::export::Formatter;
 use serde::{Deserialize, Serialize};
 use std::ops::Deref;
 use std::sync::Mutex;
@@ -23,6 +24,20 @@ pub enum ClientError {
     Serialize(serde_json::Error),
     Scryfall(ScryfallError),
 }
+
+impl std::fmt::Display for ClientError {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ClientError::Request(e) => e.fmt(f),
+            ClientError::TextDecode(e) => e.fmt(f),
+            ClientError::Deserialize(e) => e.fmt(f),
+            ClientError::Serialize(e) => e.fmt(f),
+            ClientError::Scryfall(e) => format!("{:?}", e).fmt(f),
+        }
+    }
+}
+
+impl std::error::Error for ClientError {}
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct ScryfallError {

@@ -1,3 +1,4 @@
+pub mod cache;
 pub mod card;
 pub mod client;
 pub mod decklist;
