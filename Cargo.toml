@@ -8,7 +8,7 @@ description = "an wrapper for the scryfall API"
 homepage = "https://github.com/cramt/scryfall-client"
 documentation = "https://github.com/cramt/scryfall-client"
 repository = "https://github.com/cramt/scryfall-client"
-readme = "README.mdc"
+readme = "README.md"
 
 [dependencies]
 reqwest = "0.10.8"
