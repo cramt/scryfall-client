@@ -5,7 +5,7 @@ use eyre::Result;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use std::ffi::OsString;
-use std::fs::{create_dir_all, read_dir, remove_file, File};
+use std::fs::{create_dir_all, read_dir, remove_dir_all, remove_file, File};
 use std::io::Write;
 use std::ops::Deref;
 use std::path::PathBuf;
@@ -86,6 +86,11 @@ impl IoCache {
         Ok(Box::new(
             read_dir(self.dir_location.as_path())?.map(|x| x.unwrap().file_name()),
         ))
+    }
+
+    pub fn delete(&self) -> Result<()> {
+        remove_dir_all(self.dir_location.deref())?;
+        Ok(())
     }
 
     fn name_format(&self, name: String) -> String {

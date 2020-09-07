@@ -55,6 +55,10 @@ impl ScryfallCache {
             inner_iter: self.io.get_all()?,
         })
     }
+
+    pub fn delete(self) -> Result<()> {
+        self.io.delete()
+    }
 }
 
 #[derive(Debug, Clone)]
