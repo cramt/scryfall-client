@@ -16,7 +16,8 @@
     <cargoProject FILE="$PROJECT_DIR$/macros/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa521b5b-28bb-4f91-af9a-28dd920bf4e1" name="Default Changelist" comment="">
+    <list default="true" id="aa521b5b-28bb-4f91-af9a-28dd920bf4e1" name="Default Changelist" comment="added license and readme">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -441,10 +442,10 @@
     </state>
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1598353068144" />
     <state x="686" y="139" key="#com.intellij.ide.util.MemberChooser/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599414769422" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1599475346969">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1599476423020">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1599475346969" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1599476423020" />
     <state x="433" y="0" key="CommitChangelistDialog2/1920.319.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1599415458506" />
     <state x="129" y="58" key="DiffContextDialog" timestamp="1596215112017">
       <screen x="0" y="0" width="1366" height="768" />
@@ -490,6 +491,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1598362733244" />
+    <state x="493" y="86" key="RollbackChangesDialog" timestamp="1599476432902">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="493" y="86" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1599476432902" />
     <state x="184" y="28" key="SettingsEditor" timestamp="1598362712455">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
