@@ -16,10 +16,7 @@ impl<'a> Iterator for CacheIterator<'a> {
             let os_string = self.inner_iter.next()?;
             result = match self.inner.io.get(os_string.to_str().unwrap()) {
                 Err(_) => None,
-                Ok(o) => match o {
-                    Some(o) => Some(o),
-                    None => None,
-                },
+                Ok(o) => o
             };
             if result.is_some() {
                 break;
