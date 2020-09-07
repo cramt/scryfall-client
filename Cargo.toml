@@ -3,6 +3,12 @@ name = "scryfall-client"
 version = "0.1.0"
 authors = ["Alexandra Østermark <alex.cramt@gmail.com>"]
 edition = "2018"
+license = "LICENSE"
+description = "an wrapper for the scryfall API"
+homepage = "https://github.com/cramt/scryfall-client"
+documentation = "https://github.com/cramt/scryfall-client"
+repository = "https://github.com/cramt/scryfall-client"
+readme = "README.mdc"
 
 [dependencies]
 reqwest = "0.10.8"
