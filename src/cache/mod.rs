@@ -29,7 +29,7 @@ impl ScryfallCache {
             Some(meta) => meta.download_time + self.expiration.as_millis() > get_unix_time(),
         } {
             let result = Client.search(&self.query).await?;
-            self.io.add(result);
+            self.io.add(result)?;
         };
         Ok(())
     }

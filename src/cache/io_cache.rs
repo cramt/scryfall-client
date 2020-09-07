@@ -28,7 +28,7 @@ impl IoCache {
         let gitignore = dir_location.join(".gitignore");
         if !gitignore.exists() {
             let mut file = File::create(gitignore)?;
-            file.write_all(b"*");
+            file.write_all(b"*")?;
         }
         Ok(Self { dir_location })
     }
@@ -46,7 +46,7 @@ impl IoCache {
     }
 
     fn add_individual(&self, card: Card) -> Result<()> {
-        self.write_to_file(&card.name, &card);
+        self.write_to_file(&card.name, &card)?;
         Ok(())
     }
 

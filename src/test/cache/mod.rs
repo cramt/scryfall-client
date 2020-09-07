@@ -17,10 +17,10 @@ mod cache {
             ),
         );
         block_on(cache.check()).unwrap();
-        block_on(cache.iter())
+        let _ugins = block_on(cache.iter())
             .unwrap()
             .filter(|x| x.type_line.starts_with("Legendary Planeswalker"))
             .collect::<Vec<Card>>();
-        cache.delete();
+        cache.delete().unwrap();
     }
 }
