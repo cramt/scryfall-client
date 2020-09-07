@@ -82,6 +82,8 @@ lazy_static! {
     static ref LAST_WAIT_FOR_RATE_LIMIT_CALL: Mutex<u128> = Mutex::new(0);
 }
 
+const RATE_LIMIT_WAIT: u32 = 100;
+
 pub fn get_unix_time() -> u128 {
     SystemTime::now()
         .duration_since(SystemTime::UNIX_EPOCH)
@@ -102,6 +104,6 @@ pub async fn wait_for_rate_limit() -> () {
         value.deref().clone(),
         get_unix_time(),
     )));
-    *value = get_unix_time() + 100;
+    *value = get_unix_time() + RATE_LIMIT_WAIT as u128;
     ()
 }

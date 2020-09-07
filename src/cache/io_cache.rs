@@ -5,10 +5,10 @@ use eyre::Result;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use std::ffi::OsString;
-use std::fs::{read_dir, remove_file, File};
-use std::io::{Write};
-use std::path::{PathBuf};
-
+use std::fs::{create_dir_all, read_dir, remove_file, File};
+use std::io::Write;
+use std::ops::Deref;
+use std::path::PathBuf;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub(crate) struct MetaData {
@@ -21,8 +21,16 @@ pub(crate) struct IoCache {
 }
 
 impl IoCache {
-    pub fn new(dir_location: Box<PathBuf>) -> Self {
-        Self { dir_location }
+    pub fn new(dir_location: Box<PathBuf>) -> Result<Self> {
+        if !dir_location.exists() {
+            create_dir_all(dir_location.deref())?;
+        }
+        let gitignore = dir_location.join(".gitignore");
+        if !gitignore.exists() {
+            let mut file = File::create(gitignore)?;
+            file.write_all(b"*");
+        }
+        Ok(Self { dir_location })
     }
 
     fn write_to_file<S: ToString, T: ?Sized + Serialize>(&self, name: S, value: &T) -> Result<()> {

@@ -11,9 +11,11 @@ use std::time::Duration;
 pub mod cache_iterator;
 mod io_cache;
 
+#[derive(Debug)]
 pub struct ScryfallCache {
     io: IoCache,
     expiration: Duration,
+    query: String,
 }
 
 impl ScryfallCache {
@@ -26,19 +28,18 @@ impl ScryfallCache {
             None => true,
             Some(meta) => meta.download_time + self.expiration.as_millis() > get_unix_time(),
         } {
-            let result = Client
-                .search(search_builder::Builder::all_cards().stringify())
-                .await?;
+            let result = Client.search(&self.query).await?;
             self.io.add(result);
         };
         Ok(())
     }
 
     pub fn new_options(options: CacheOptions) -> Self {
-        let (path, expiration) = options.unpack();
+        let (path, expiration, query) = options.unpack();
         Self {
-            io: IoCache::new(path),
+            io: IoCache::new(path).unwrap(),
             expiration,
+            query,
         }
     }
 
@@ -56,9 +57,11 @@ impl ScryfallCache {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct CacheOptions {
     location: Box<PathBuf>,
     expiration: Duration,
+    query: String,
 }
 
 impl CacheOptions {
@@ -66,8 +69,8 @@ impl CacheOptions {
         Self::default()
     }
 
-    pub fn unpack(self) -> (Box<PathBuf>, Duration) {
-        (self.location, self.expiration)
+    pub fn unpack(self) -> (Box<PathBuf>, Duration, String) {
+        (self.location, self.expiration, self.query)
     }
 
     pub fn location(mut self, path: PathBuf) -> Self {
@@ -79,6 +82,11 @@ impl CacheOptions {
         self.expiration = time;
         self
     }
+
+    pub fn query<S: ToString>(mut self, query: S) -> Self {
+        self.query = query.to_string();
+        self
+    }
 }
 
 impl Default for CacheOptions {
@@ -86,6 +94,7 @@ impl Default for CacheOptions {
         Self {
             location: Box::new(std::env::current_dir().unwrap().join("__scryfall_cache")),
             expiration: Duration::from_secs(60 * 60 * 24),
+            query: search_builder::Builder::all_cards().stringify(),
         }
     }
 }

@@ -1,3 +1,4 @@
+mod cache;
 mod card;
 mod client;
 mod decklist;

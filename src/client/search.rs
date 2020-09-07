@@ -20,7 +20,24 @@ impl Client {
             let query = self
                 .search_client()
                 .form(&[("q", &query), ("page", &page.to_string())]);
-            let card = self.send_request::<SearchResult>(query).await?;
+            let result = self.send_request::<SearchResult>(query).await;
+            match &result {
+                Err(err) => match err {
+                    ClientError::Scryfall(scryfall) => {
+                        if scryfall.status == 422
+                            && scryfall.code == "validation_error"
+                            && scryfall
+                                .details
+                                .starts_with("You have paginated beyond the end of these results")
+                        {
+                            break;
+                        }
+                    }
+                    _ => {}
+                },
+                _ => {}
+            }
+            let card = result?;
             results.extend(card.data.into_iter());
             if !card.has_more {
                 break;
