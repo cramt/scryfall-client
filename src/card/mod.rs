@@ -4,6 +4,7 @@ pub mod rarity;
 use crate::card::border_color::BorderColor;
 use crate::card::color::Colors;
 use crate::card::legality::Legality;
+use crate::card::magic_date::MagicDate;
 use crate::card::mana_cost::ManaCostCollection;
 use crate::card::rarity::Rarity;
 use serde::{Deserialize, Serialize};
@@ -11,6 +12,8 @@ use std::collections::HashMap;
 
 pub mod color;
 pub mod legality;
+pub mod magic_date;
+pub mod magic_set;
 pub mod mana_cost;
 
 //https://scryfall.com/docs/api/cards
@@ -84,8 +87,7 @@ pub struct Card {
     pub purchase_uris: HashMap<String, String>,
     pub rarity: Rarity,
     pub related_uris: HashMap<String, String>,
-    pub released_at: String,
-    //TODO: make this a date object
+    pub released_at: MagicDate,
     pub reprint: bool,
     pub scryfall_set_uri: String,
     pub set_name: String,

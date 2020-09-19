@@ -17,4 +17,10 @@ impl Client {
         self.post("https://api.scryfall.com/cards/collection")
             .header("Content-Type", "application/json")
     }
+    pub(super) fn sets_client(&self) -> reqwest::RequestBuilder {
+        self.get("https://api.scryfall.com/sets")
+    }
+    pub(super) fn set_client<S: AsRef<str>>(&self, str: S) -> reqwest::RequestBuilder {
+        self.get(format!("https://api.scryfall.com/sets/{}", str.as_ref()).as_str())
+    }
 }

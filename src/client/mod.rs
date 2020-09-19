@@ -5,6 +5,8 @@ mod collection;
 mod name;
 mod random;
 mod search;
+mod set;
+mod sets;
 
 use lazy_static::*;
 use reqwest::IntoUrl;
